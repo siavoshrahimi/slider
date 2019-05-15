@@ -1,5 +1,5 @@
 import React,{Fragment,Component} from 'react';
-import {Switch,Route,BrowserRouter} from 'react-router-dom';
+import {Switch,Route,Router} from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
 
@@ -19,7 +19,7 @@ export const history = createHistory();
 class Routes extends Component{
     render() {
         return (
-            <BrowserRouter history={history}>
+            <Router history={history}>
                 <Fragment>
                     <Layout>
                         <Switch>
@@ -32,7 +32,7 @@ class Routes extends Component{
                         </Switch>
                     </Layout>
                 </Fragment>
-            </BrowserRouter>
+            </Router>
 
         );
     }

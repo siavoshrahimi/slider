@@ -6,7 +6,7 @@ class Menu extends Component{
        return(
            <div>
                <ul>
-                   <li><NavLink to='/landing' >Landing Page</NavLink></li>
+                   <li><NavLink to='/' >Landing Page</NavLink></li>
                    <li><NavLink to='/dashboard' >Dashboard</NavLink></li>
                    <li><NavLink to='/slide-show' >Slide Show</NavLink></li>
                    <li><NavLink to='/single-slider' >Single Slider</NavLink></li>

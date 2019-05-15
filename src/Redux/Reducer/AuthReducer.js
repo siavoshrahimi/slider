@@ -1,9 +1,11 @@
 const initialState = {
     isAuth:false,
+    profile:[]
 }
 
 
 const AuthReducer = (state=initialState, action) => {
+    debugger;
     switch (action.type) {
         case 'Login':
             return {
@@ -13,6 +15,10 @@ const AuthReducer = (state=initialState, action) => {
             return {
                 isAuth:false
             };
+        case 'AddUser':
+            return{
+                profile:action.profile
+            }
         default:
             return state;
     }

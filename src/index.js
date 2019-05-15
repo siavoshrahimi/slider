@@ -4,7 +4,7 @@ import App from './App';
 import {Provider} from 'react-redux';
 import createStore from './Redux/Store/Store';
 import {firebase} from "./Firebase/firebase";
-import {loginAction,logoutAction} from './Redux/Actions/AuthAction';
+import {loginAction,logoutAction,startAddUser} from './Redux/Actions/AuthAction';
 import {history} from './Route/Route';
 
 import './index.css';
@@ -31,9 +31,15 @@ const appRender = () => {
 
 
 firebase.auth().onAuthStateChanged((user)=>{
-
     if(user){
+        const profile = {
+            name:user.displayName,
+            email:user.email,
+            userId:user.uid,
+            photo:user.photoURL
+        }
         store.dispatch(loginAction());
+        store.dispatch(startAddUser(profile,user.uid));
         appRender();
         if(history.location.pathname === '/login'){
             history.push('/dashboard');

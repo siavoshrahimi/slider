@@ -9,14 +9,17 @@ class Dashboard extends Component{
         firebase.auth().signOut();
     }
     render(){
+        console.log(this.props.antoni)
         return(
             <button onClick={this.lougoutHandler}>Logout</button>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    logoutAction: () => dispatch(logoutAction())
-})
+const mapStateToProps = (state) => {
+    return {
+        antoni: state.isAuth,
+    }
+}
 
-export default connect(null,mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
