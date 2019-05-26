@@ -12,6 +12,7 @@ import Dashboard from '../Component/Dashboard/Dashboard';
 import SingleSlider from "../Component/SingleSlider/SingleSlider";
 import SlideShow from "../Component/SlideShow/SlideShow";
 import Carousel from "../Component/Carousel/Carousel";
+import Detail from '../Component/Detail/Detail';
 
 export const history = createHistory();
 
@@ -28,6 +29,7 @@ class Routes extends Component{
                             <Route path='/single-slider' component={SingleSlider}/>
                             <Route path='/slide-show' component={SlideShow}/>
                             <Route path='/carousel' component={Carousel}/>
+                            <Route path='/detail/:city' component={Detail}/>
                             <PrivateRoute  path='/dashboard' component={Dashboard}/>
                         </Switch>
                     </Layout>

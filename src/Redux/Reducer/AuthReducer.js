@@ -1,22 +1,25 @@
 const initialState = {
     isAuth:false,
-    profile:[]
+    profile:{}
 }
 
 
 const AuthReducer = (state=initialState, action) => {
-    debugger;
     switch (action.type) {
         case 'Login':
             return {
+                ...state,
                 isAuth:true
             };
         case 'Logout':
             return {
-                isAuth:false
+                ...state,
+                isAuth:false,
+                profile:{}
             };
         case 'AddUser':
             return{
+                ...state,
                 profile:action.profile
             }
         default:

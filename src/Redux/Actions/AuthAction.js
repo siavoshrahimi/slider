@@ -20,27 +20,20 @@ export const addUserAction = (profile) =>{
         profile
     }
 }
-/*export const getUserAction = (profile) =>{
-    return{
-        type:'GetUser',
-        profile
-    }
-}*/
-export const startAddUser = (data,uid) => {
+export const startAddUser = (data) => {
     return (dispatch) => {
-        console.log(uid);
+        const uid = data.userId;
         database.ref(`users/${uid}/profile`).once('value')
             .then( res => {
                 if(res.val()){
-                    //dispatch(addUserAction(res.val()));
+                    dispatch(addUserAction(res.val()));
                     console.log('user too data base haaast');
-}
+                }
                 else{
-                   database.ref(`users/${uid}/profile`).set(data)
-                       .then(()=>{
-                           debugger;
-                           dispatch(addUserAction({...data}));
-                           console.log('user niiiist');
+                    database.ref(`users/${uid}/profile`).set(data)
+                        .then(()=>{
+                            dispatch(addUserAction({...data}));
+                            console.log('user niiiist');
                         })
                 }
             })

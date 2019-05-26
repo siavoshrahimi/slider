@@ -1,0 +1,60 @@
+.single-card-wrapper{
+  width: 400px;
+  margin: 0 auto;
+  padding: 15px 25px;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  h1{
+    text-align: center;
+    font-size: 27px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #777;
+  }
+  .time-bar-wrapper{
+    height: 1px;
+    width: 100%;
+    position: relative;
+    background-color: #eee;
+    .time-bar{
+      position: absolute;
+      background-image: linear-gradient(to right, #72ace8f2, #273c6b);
+      left: 0;
+      top:0;
+      height: 1px;
+      animation: fill-bar 15s linear infinite;
+    }
+  }
+  .fade-enter{
+    opacity: 0;
+    transform: scale(0.9);
+    z-index: 1;
+    &.fade-enter-active{
+      transform: scale(1);
+      opacity: 1;
+      transition: all 400ms linear;
+    }
+  }
+  .fade-exit{
+    opacity: 1;
+    transform: scale(1);
+    &.fade-exit-active{
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 400ms linear;
+    }
+  }
+  .fade-exit-done{
+    opacity: 0;
+  }
+
+}
+
+@keyframes fill-bar {
+  0%{width:0}
+  100%{width: 100%}
+}
+@-webkit-keyframes fill-bar {
+  0%{width:0}
+  100%{width: 100%}
+}

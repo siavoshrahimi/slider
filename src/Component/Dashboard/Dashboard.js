@@ -1,25 +1,19 @@
 import React,{Component} from 'react';
-import { connect } from 'react-redux';
-import {logoutAction} from '../../Redux/Actions/AuthAction';
-import {firebase} from '../../Firebase/firebase';
+
+
 
 class Dashboard extends Component{
-    lougoutHandler = () => {
-        //this.props.logoutAction();
-        firebase.auth().signOut();
+    componentWillMount() {
+        document.title = 'Hummingbird | dashboard'
     }
+
+
     render(){
-        console.log(this.props.antoni)
         return(
-            <button onClick={this.lougoutHandler}>Logout</button>
+            <h1>dashboard</h1>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        antoni: state.isAuth,
-    }
-}
 
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;

@@ -4,10 +4,10 @@ import App from './App';
 import {Provider} from 'react-redux';
 import createStore from './Redux/Store/Store';
 import {firebase} from "./Firebase/firebase";
-import {loginAction,logoutAction,startAddUser} from './Redux/Actions/AuthAction';
-import {history} from './Route/Route';
-
+import {loginAction,startAddUser} from './Redux/Actions/AuthAction';
+import './assets/styles/bootstrap.min.css'
 import './index.css';
+import Spinner from './Component/UI/Spinner/Spinner';
 
 const store = createStore();
 
@@ -16,7 +16,7 @@ const jsx =
         <App/>
     </Provider>)
 
-ReactDOM.render(<div>loading...</div>, document.getElementById('root'));
+ReactDOM.render(<Spinner/>, document.getElementById('root'));
 
 
 let isRender = false;
@@ -39,14 +39,11 @@ firebase.auth().onAuthStateChanged((user)=>{
             photo:user.photoURL
         }
         store.dispatch(loginAction());
-        store.dispatch(startAddUser(profile,user.uid));
+        store.dispatch(startAddUser(profile));
         appRender();
-        if(history.location.pathname === '/login'){
-            history.push('/dashboard');
-        }
+
     }
     else{
-        store.dispatch(logoutAction());
         appRender();
     }
 });

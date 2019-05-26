@@ -1,27 +1,40 @@
-import React,{Component} from 'react';
-import {loginAction} from '../../Redux/Actions/AuthAction';
-import { connect } from 'react-redux';
+import React,{Component,Fragment} from 'react';
 
-import {googleAuthProvider,firebase} from '../../Firebase/firebase';
+//css
+import './Login.scss';
+import {connect} from "react-redux";
 
 class Login extends Component {
-    loginHandler = () =>{
-        firebase.auth().signInWithPopup(googleAuthProvider);
-
+    componentWillMount() {
+        document.title = 'Hummingbird | login'
     }
+
     render(){
+        const {ProfileData} = this.props;
         return (
-            <div>
-                <button onClick={this.loginHandler}>Login with Google Account</button>
-            </div>
+            <Fragment>
+                {!ProfileData.isAuth && <div className='login-content'>
+                    <p>For accessing to Dashboard you should login to app </p>
+                    <p>For login to app press the login button in the menu on top of the page </p>
+                </div>}
+                {
+                    ProfileData.isAuth && <div className='login-content'>
+                        <h1>Hi {ProfileData.profile.name}</h1>
+                        <p>You are already login to the app</p>
+                    </div>
+                }
+            </Fragment>
+
         )
     }
 
 }
-/*map dispatch to props */
-const mapDispatchToProps = dispatch => ({
-    loginAction: () => dispatch(loginAction())
-});
 
 
-export default connect(null,mapDispatchToProps)(Login);
+const mapStateToProps = (state) => {
+    return {
+        ProfileData: state.auth,
+    }
+}
+
+export default connect(mapStateToProps)(Login);

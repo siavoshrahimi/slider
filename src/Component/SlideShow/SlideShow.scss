@@ -1,0 +1,46 @@
+.slide-show-container{
+  position: relative;
+  padding-bottom: 50px;
+  overflow-x: hidden;
+  .navigate{
+    z-index: 100;
+    position: absolute;
+    top:calc(50% - 25px);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    svg{
+      fill: #888;
+    }
+    &:hover{
+      background: #fff;
+      svg{
+        fill:#000;
+      }
+    }
+    &.next{
+      right: 25px;
+    }
+    &.before{
+      left: 25px;
+    }
+  }
+  .card-slider{
+    margin:0 auto;
+    max-width: 450px;
+    height: 300px;
+    position: relative;
+    .card-slider-wrapper{
+      position: absolute;
+      display: flex;
+      height: 100%;
+      transition:transform 400ms ease-in-out;
+      transform-style: preserve-3d;
+    }
+  }
+}
