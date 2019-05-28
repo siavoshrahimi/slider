@@ -29,7 +29,7 @@ class SingleSlider extends Component{
           nextProp = this.state.property.index+1;
         }
         this.setState({property:this.state.properties[nextProp]})
-      },15000);
+      },10000);
     }
     componentWillUnmount(){
         clearInterval(this.myInterval)
@@ -44,10 +44,10 @@ class SingleSlider extends Component{
                 <div className='time-bar-wrapper'>
                     <div className='time-bar'></div>
                 </div>
-              <TransitionGroup>
+              <TransitionGroup className='single-card-container'>
                 <CSSTransition
                   key={property._id}
-                  timeout={4000}
+                  timeout={800}
                   classNames='fade'
                 >
                   <Card property={property}/>
