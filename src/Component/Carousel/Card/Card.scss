@@ -1,0 +1,52 @@
+.carousel-card{
+  padding: 20px;
+  border-radius: 3px;
+  width:340px;
+  transition: transform 0.3s linear;
+  &:hover{
+    box-shadow: 0 0 3px #ccc;
+    transform: translateY(-5px);
+  }
+  a{
+    text-decoration: none;
+    display: block;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+  img{
+    width:100%;
+    border-radius: 3px;
+  }
+  .detail-icon{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    div{
+      display: flex;
+      justify-content: space-between;
+      flex: 1.5;
+    }
+    .city{
+      flex: 2;
+      justify-content: flex-end;
+      display: flex;
+    }
+    span{
+      color: #969696;
+      svg{
+        margin-right: 5px;
+        vertical-align: sub;
+      }
+    }
+  }
+  .price{
+    color: green;
+    text-align: center;
+    font-size: 22px;
+    background: #eee;
+    padding: 5px 0;
+    border-radius: 4px;
+  }
+
+}
